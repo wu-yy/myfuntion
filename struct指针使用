@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+typedef struct {
+	int a;
+	int b;
+}A; 
+void C(A**a)
+{
+	A b;
+	*a=&b;
+	(*a)->a=1;
+	(*a)->b=2;
+}
+void D(A*a)
+{
+	if(a==NULL)
+	{
+		cout<<"A is NULL"<<endl;
+		A b;
+		a=&b;
+		a->a=3;
+		a->b=4;
+		
+	}else
+	{
+	a->a=3;
+	a->b=4;
+	}
+
+}
+int main()
+{
+
+  A *p=NULL;
+  C(&p);
+  
+	A b;
+	A *a=&b;
+	D(a); 
+	cout<<a->a<<" "<<a->b<<endl;
+	return 0;
+}
