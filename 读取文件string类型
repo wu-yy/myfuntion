@@ -1,0 +1,10 @@
+ #include<string>
+ string s = "";
+	int line = 0;
+	//读出label
+	while (!fin.eof())
+	{
+		getline(fin, s);//getline 属于string	
+		line++;
+	}
+	fin.close();
