@@ -5,6 +5,14 @@ using namespace std;
 
 int test(int a); 
 
+void test2(int a)
+{
+	cout<<"test2"<<endl;
+ } 
+ struct A{
+ 	void (*fp)(int a);
+ 	int c;
+ };
 int main(int argc,char* argv[]) 
 { 
 cout<<test<<endl;//显示函数地址 
@@ -12,13 +20,21 @@ int (*fp)(int a);
 fp=test;//将函数test的地址赋给函数学指针fp 
 cout<<fp(5)<<"|"<<(*fp)(10)<<endl; 
 //上面的输出fp(5),这是标准c++的写法,(*fp)(10)这是兼容c语言的标准写法,两种同意,但注意区分,避免写的程序产生移植性问题! 
+void (*testp)(int a);
+testp=test2;
+
+testp(8);
+
+A d;
+d.fp=test2;
+d.fp(2);
+
 cin.get(); 
 } 
 int test(int a) 
 { 
 return a; 
 }
-
 //typedef定义可以简化函数指针的定义，在定义一个的时候感觉不出来，但定义多了就知道方便了，上面的代码改写成如下的形式：
 
 #include <iostream> 
