@@ -12,3 +12,4 @@ enum{  //此inode 所属的文件系统类型
 }in_type;
 
 };
+ 
