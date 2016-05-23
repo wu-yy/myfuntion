@@ -57,3 +57,36 @@ int test(int a)
 { 
 return a; 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+void A(int & s)
+{
+	s=0;//会改变传进的参数的值 
+ } 
+ void B(int *s)
+ {
+ 	*s=0; //会改变传进的参数的值 
+	 s=0;//不会改变传进的参数的值 
+ }
+ int main()
+ {
+ 	int a=1;
+ 	A(a);
+ 	cout<<a<<endl;
+ 	return 0;
+ }
