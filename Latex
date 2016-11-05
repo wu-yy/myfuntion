@@ -1,1 +1,272 @@
+\\   表示换行
 
+\chapter{}
+\section{}
+\subsection{}
+其中chapter 表示每一个大的章节，section 为章节里面的每一个小标题
+
+\tableofcontents
+
+\section{文字标题}
+
+\newtheorem{myDef}{定义}[chapter]  这里的mydef带有单元标号的自定义段落
+例如：
+\begin{mydef}
+树的基本定义
+\begin{itemize}
+\item\texbf{树}：一个不含任何回路的连通图,用T表示
+\item\textbf{树枝}：T中的边，称为T的树枝
+\item\textbf{树叶}：T中度为一的结点
+\end{itemize}
+\end{mydef}
+
+\begin{itemize}
+\item[-] T为连通图,故不存在度为零的结点
+假设T中不存在树叶结点,则意味着不存在度为1的结点,则所有结点度均不小于2，故\\
+\end{itemize}
+
+ajustwidth:  解释：整体缩进
+\begin{adjustwidth}{0.62cm}{0.62cm}
+\textbf{割边}：设e是G的一条边，若G’=G-e 比G的连连通支数增加，则称e是G的一条\textbf{割边}
+\end{adjustwidth}
+
+enumerate:带有数字标号的item
+例如：
+\begin{enumerate} % 默认是数字 如果后面为：\begin{enumerate}[解法I] 则格式和给出的一致
+\item T连通且无回路
+\item T连通且每条边都是割边
+\item T连通且有n-1条边
+\item T有n-1条边且无回路
+\item T的任意两结点间有唯一道路
+\item T无回路，但在任意两结点间加上一条边后恰有一个回路
+\end{enumerate}
+
+mathbf{V}: 对字母V 在数学公式里加粗
+
+显示数学公式： displaymath
+\begin{displaymath}
+m=\frac{1}{2}\cdot\sum_{v\in\mathbf{V}}d(v)\Longrightarrow m\geqslant\frac{1}{2}\cdot2n=n>n-1
+\end{displaymath}
+
+chapquote: 斜体罗马字体表示的名人名言
+例如：
+\begin{chapquote}{Francis Bacon,\textit{British philosopher}}
+``Histories make men wise ; poems witty; the mathematics subtle; natural philosophy deep ; moral grave ; logic and rhetoric able to contend .''
+\end{chapquote}
+
+paragraph： 段落 可以表示一整段定理或者定义 ，并且可以加粗开始的文字
+\paragraph{定义2.1}有向连通图G = (V , E)的关联矩阵B中划去任意节点$v_{k}$所对应的行...
+
+$i_1$:  表示带有下标的数字表示 
+$$k_1b(i_1)+k_2b(i_{2})+\cdots+k_lb(i_l)=0$$ : 自动换行的数学公式
+
+\[ 数学公式的限制条件 \]
+\tag{1} 右下标数字表示第几个公式
+例如：
+\[k_j {\neq} 0,j=1,2,\cdots,l \tag{1}\]22
+
+$B^{\prime}$ ： 表示B’
+
+$\vec{T}$   ： 表示T向量
+
+矩阵的表示：
+第一种方法：其中边界为（）
+ $$eft[
+\begin{array}{cc}     % 其中cc 表示矩阵的每行有多少元素，即矩阵有几列
+A&B\\
+C&D
+\end{array}
+\right]$$
+第二种方法:bmatrix 其中边界为【】
+\begin{bmatrix}
+4&3&2\\-2&4&3
+\end{bmatrix}
+带有行标和列标的矩阵表示：
+\begin{align*}B=
+\begin{matrix}
+v_1\ldelim[{4}{0.1cm}&1&-1&1&0&0&1&\rdelim]{4}{0.1cm}\\
+v_2 &0&0&-1&-1&0&-1\\
+v_3 &-1&1&0&0&1&0\\
+v_4 &0&0&0&1&-1&0&\\
+&e_1 & e_2 &e_3 &e_4 &e_5 &e_6
+\end{matrix}
+\Longrightarrow
+\begin{matrix}
+v_1\ldelim[{4}{0.1cm}&1&-1&1&0&0&1&\rdelim]{4}{0.1cm}\\
+v_2 &0&0&-1&-1&0&-1\\
+v_3 &-1&1&0&0&1&0\\
+v_4 &&&&&&&\\
+&e_1 & e_2 &e_3 &e_4 &e_5 &e_6
+\end{matrix}\\
+\end{align*}
+
+
+省略号：
+cdots  :横向额省略号
+vdots: 纵向的省略号
+ddots: 斜向的省略号
+
+\tag{数字}  解释：一般放在数学公式的后面表示 这是第几个数学公式
+
+1、单行
+\begin{equation}
+    ...
+\end{equation}
+2、多行
+\begin{gather}
+    ...
+\end{gather}
+3、多列
+\begin{align}
+    ...
+\end{align}
+单列与多列的区别在于：列对齐符号 & 是否起作用，单列公式中 & 不起列对齐作用，多列公式中 & 起列对齐作用。
+多列公式环境有：align、flalign、alignat，它们间的区别是：列间距不同
+
+（1）、align 每行中的几列公式均匀分布，并且第一列前部和最后一列的后部与页边有空隙。
+（2）、flalign 每行中的几列公式均匀分布，且公式与页边无空隙。
+（3）、alignat 列之间没有空隙，需要自己指定。
+单行和多行的区别在于：换行符号 \\ 是否起作用。单行公式中 \\ 不起换行作用，而在多行公式中 \\ 起到换行的作用。
+二、组合公式
+组合公在公式环境（也就是 equation 环境）中。
+1、分段函数形式（cases）
+\begin{equation}
+    f(x) =
+    \begin{cases}
+        1,     & x < 0;
+        0.5   & x = 0;
+        0,     & x > 0.
+    \end{cases}
+\end{equation}
+另一种表示方法：
+\[
+c_{ij} = \left\{
+\begin{aligned}
+1&\\
+{-1}&\\
+0&\\
+\end{aligned}
+\right.
+\]
+
+2、推导演绎形式 （gathered）
+\begin{equation}
+    \left .
+    \begin{gathered}
+        S \subseteq T \\
+        S \supseteq T
+    \end{gathered}
+    \right \}  \implies S = T      
+\end{equation}
+3、组合多列形式（aligned）
+aligned 是 align 的组合形式，用在 equation 环境中用来修饰 equation 的列对齐特性。
+\begin{equation}
+    \begin{aligned}
+        x = 5, y = 1.2, z = 3  \\
+    \end{aligned}
+    \begin{aligned}
+        a< b, b < c, c < d
+    \end{aligned}
+\end{equation}
+如果要在列之间加空格，可以自己用 \quad 调节。
+aligned 组合形式很灵活，可以代替 cases 和 gathered 形式：
+\begin{equation}
+    f(x) = \left \{
+    \begin{aligned}
+        0,   \quad  x < 0;    \\
+        0.5 \qaud  x = 0;    \\
+        1,   \quad  x  > 0;
+    \end{aligned}
+    \right \}
+\end{equation}
+
+gather*使用： 解释：多个数学公式
+例如
+\begin{gather*}
+...
+\end{gather*}
+
+\qquad    表示后退两格。\quad   表示后退一格
+
+eqnarray* 解释： 多行公式左对齐
+例如：
+\begin{eqnarray*}
+det(AB)&=&\sum_{i}{A_{i}B_{i}}\\
+&=&\begin{vmatrix}4&3\\-2&4\end{vmatrix}\begin{vmatrix}5&1\\0&3\end{vmatrix}+
+\begin{vmatrix}4&2\\-2&3\end{vmatrix}\begin{vmatrix}5&1\\4&2\end{vmatrix}+
+\begin{vmatrix}3&2\\4&3\end{vmatrix}\begin{vmatrix}0&3\\4&2\end{vmatrix}\\
+&=&414
+\end{eqnarray*}
+
+\noindent ： 解释： 没有缩进
+
+
+图片和文字如何放在一左一右呢？
+\begin{wrapfigure}{l}{0.5\textwidth}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{/Users/wangshuo/Documents/tex/book/image/有向树.png}
+  \end{center}
+  \vspace{-80pt}
+\end{wrapfigure}
+$\ $
+\\\\\\
+$\Longrightarrow B_0=\begin{matrix}
+v_0\ldelim[{5}{0.1cm}& & & & &\rdelim]{5}{0.1cm}\\
+v_1 &-1&0&1&1\\
+v_2 &0&0&-1&0\\
+v_3 &0&0&0&-1\\
+v_4 &0&-1&0&0\\
+&e_1 & e_2 &e_3 &e_4
+\end{matrix}$
+
+
+\color{red} ：解释：修改字体的颜色
+
+负数的表示： 例如-1：{-1}
+
+
+伪代码如何表示呢？
+\begin{algorithm}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand\algorithmicensure {\textbf{Output:} }
+    \caption{Huffman算法}
+    \label{alg:6}%这个是编号
+    \begin{algorithmic}[1]
+        \REQUIRE 给定带权二叉树的权序列$w_1,w_2,...,w_t$。 %算法的输入参数：Input
+      \ENSURE  最优二叉树%算法的输出参数：Output在编译时，require和ensure会被替换为input和output
+      \label{alg:6}  %state命令是开始算法，这是会有默认的编号产生
+      \STATE 对t$(t \ge 2)$个权值进行排序，使得
+      \begin{displaymath}
+      \qquad
+        w_{i1} \leqslant w_{i2} \leqslant ... \leqslant w_{it}
+      \end{displaymath}
+      \STATE 计算$w_i=w_{i1}+w_{i2}$作为中间结点$v_i$的权，$v_i$的左儿子是$v_{i1}$，右儿子是$v_{i2}$。在权序列中删去$w_{i1},w_{i2}$，加入$w_i$，$t\gets t-1$。若t=1，结束。否则转（1）。
+        % \FOR {...用公式或者文字描写for语句}
+        %    \STATE  %for里边的具体内容
+        % \ENDFOR   %用endfor来结束for语句
+    \end{algorithmic}
+\end{algorithm}
+
+
+图片如何插入呢？
+\begin{figure}[H]
+\centering
+\includegraphics[width=4in]{/Users/wangshuo/Documents/tex/book/image/6_4.png}
+\caption{}\label{fig:1}
+\end{figure}
+插入并列的图片：
+\begin{figure}
+\centering
+\subfigure[骑士遍历问题的一个解]{
+\label{Fig.sub.1}
+\includegraphics[width=0.3\textwidth]{图0.png}}
+\subfigure[正十二面体的一个哈密尔顿回路]{
+\label{Fig.sub.2}
+\includegraphics[width=0.3\textwidth]{图1.png}}
+\subfigure[赫歇尔图]{
+\label{Fig.sub.2}
+\includegraphics[width=0.3\textwidth]{图2.png}}
+\caption{正十二面体图(图b)是一个哈密尔顿图，而赫歇尔图(图c)则不是}
+\label{Fig.lable}
+\end{figure}
