@@ -1,0 +1,226 @@
+\documentclass[a4paper,11pt]{book}
+\usepackage{ctex}
+\usepackage{fontenc}
+\usepackage{changepage}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{multirow}
+\usepackage{bigdelim}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{picinpar}
+\usepackage{float}
+\usepackage{algorithm} %format of the algorithm
+\usepackage{algorithmic} %format of the algorithm
+\usepackage{subfigure}
+\usepackage{xeCJK}
+\usepackage{caption                                                                                                                                            }
+\setCJKmainfont{宋体}
+\setmainfont{宋体}
+\setmonofont{Courier New} % 等寬字型
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\newfontfamily{\H}{黑体}
+\newfontfamily{\K}{楷体}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 'dedication' environment: To add a dedication paragraph at the start of book %
+% Source: http://www.tug.org/pipermail/texhax/2010-June/015184.html            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{dedication}
+{
+   \cleardoublepage
+   \thispagestyle{empty}
+   \vspace*{\stretch{1}}
+   \hfill\begin{minipage}[t]{0.66\textwidth}
+   \raggedright
+}
+{
+   \end{minipage}
+   \vspace*{\stretch{3}}
+   \clearpage
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chapter quote at the start of chapter        %
+% Source: http://tex.stackexchange.com/a/53380 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\renewcommand{\@chapapp}{}% Not necessary...
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+\newtheorem{theorem}{\textbf{定理}}[section]
+\newtheorem{defination}{\textbf{定义}}[section]
+\newtheorem{coro}{\textbf{推论}}[section]
+\newtheorem{sample}{\textbf{例}}[section]
+\newtheorem{guess}{\textbf{猜想}}[section]
+\renewcommand{\figurename}{图}
+\begin{document}
+\chapter{基本概念}
+\chapter{道路与回路}
+\section{道路与回路}
+\begin{defination}\K 有向图G=(V,E)中，若边序列P=($e_{i1},e_{i2},\dots,e_{iq}$ ),其中$e_{ik}=(v_l,v_j )$满足$v_l$是$e_{ik-1}$的终点，$v_j$是$e_{ik+1}$的始点，就称P 是G 的一条\textbf{有向道路}。如果$e_{iq}$的终点也是$e_{i1}$的始点，则称P是G的一条\textbf{有向回路}。
+\end{defination}
+\begin{figure}[H]
+  \centering
+  % Requires \usepackage{graphicx}                                                                                                                               
+  \includegraphics[width=0.5\textwidth]{2.1.1.png}\\
+  \caption*{一条有向的回路}\label{fig:2}
+\end{figure}
+
+\begin{sample}\H 下图中，边序列($e_5,e_4,e_5,e_7$ )是有向道路，($e_5,e_4,e_5,e_7,e_3$ )是有向回路。($e_5,e_4,e_1,e_2$ )是简单有向道路，($e_5,e_4,e_1,e_2,e_3$ ) 是简单有向回路。($e_1,e_2$ )是初级有向道路，($e_1,e_2,e_3$ )是初级有向回路。
+\begin{figure}[H]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.5\textwidth]{2.1.png}\\
+\caption{}\label{fig:2}
+\end{figure}
+\end{sample}
+\begin{defination}\K
+无向图G=(V,E)中，若点边交替序列P=$(v_{i1},e_{i1},v_{i2},e_{i2},\dots,e_{iq-1},v_{iq} )$满足$v_{ik}$，$v_{ik+1}$是$e_{ik}$的两个端点，则称P是G中的一条链，或道路。如果$v_{iq}=v_{i1}$，则称P 是G 中的一个圈，或\textbf{回路}。\\
+如果P中没有重复出现的边，称之为\textbf{简单道路}或\textbf{简单回路}，若其中结点也不重复，又称之为\textbf{初级道路}或\textbf{初级回路}。
+\end{defination}
+\begin{sample}\H
+下图中边序列($e_4,e_5,e_4,e_6$ )是道路，($e_4,e_5,e_4,e_6,e_3$ )是回路；($e_4,e_5,e_1,e_2$ )是简单道路，($e_4,e_5,e_1,e_2,e_3$ )是简单回路；($e_1,e_2$ )是初级道路，($e_1,e_2,e_3$ )是初级回路。
+\end{sample}
+\begin{sample}
+\begin{figure}[H]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.5\textwidth]{2.2.png}\\
+\caption{}\label{fig:2}
+\end{figure}
+\end{sample}
+\begin{sample}
+ 设C是简单图G中含结点数大于3的一个初级回路，如果结点$v_i$和$v_j$在C中不相邻，而边($v_i,v_j$ )∈E(G)，则称($v_i,v_j $)是C的一条弦。若对每一个$v_k∈V(G)$，都有d($v_k$ )≥3，则G中必含带弦的回路。
+\begin{adjustwidth}{0.62cm}{0.62cm}
+\textbf{证明：}在G中构造一条极长的初级道路$P=(e_{i1},e_{i2},\dots,e_{iq} )$，不妨设$e_{i1}=(v_0,v_1 )$，$e_{il}=(v_{l-1},v_l )$。由于P是极长的初级道路，所以$v_0$ 和$v_1$ 的邻接点都在该道路P上。由已知条件，d($v_0$ )≥3，不妨设Γ($v_0$ )={$v_1,v_{ij},v_{ik},\dots$}。其中1<j<k，这时($v_0,v_1,\dots,v_{i},v_0$ )是一条初级回路，而($v_0,v_{ij}$ ) 就是该回路中的一条弦。
+ \end{adjustwidth}
+\end{sample}
+% 改编到教材11页
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{哈密尔顿回路}
+
+\subsection{哈密尔顿回路的引入} 一个包含一个无向图中所有的点的初级回路被称作\textbf{哈密尔顿回路}(Hamilton Cycle)。这源于1857年Sir William Hamilton发明的一种游戏——遍历一个正十二面体，不能经过一个点两次。一个含有哈密尔顿回路的图称作\textbf{哈密尔顿图}(Hamiltonian)。 事实上，在哈密尔顿之前，1759年，欧拉就已经研究了在一个国际象棋棋盘上骑士的遍历问题(Knight's Tour on a Chess Board)(图a给出了一个解)。如果我们对旅行商问题再加上一重限制，两个城市之间的旅行费用只有$1$和$\infty$（也就是说不可能经过这条边），那么这个TSP问题就变成了这个图中所有的旅行费用为1的边中是否存在一条哈密尔顿回路。然而，直到现在，即使这种TSP问题的特殊情况仍然没有解决：没有有效算法构造图中的哈密尔顿回路，虽然是否真的有这样的算法也不知道。
+\begin{figure}[H]
+\centering
+\subfigure[骑士遍历问题的一个解]{
+\label{Fig.sub.1}
+\includegraphics[width=0.3\textwidth]{图0.png}}
+\subfigure[正十二面体的一个哈密尔顿回路]{
+\label{Fig.sub.2}
+\includegraphics[width=0.3\textwidth]{图1.png}}
+\subfigure[赫歇尔图]{
+\label{Fig.sub.2}
+\includegraphics[width=0.3\textwidth]{图2.png}}
+\caption{正十二面体图(图b)是一个哈密尔顿图，而赫歇尔图(图c)则不是}
+\label{Fig.lable}
+\end{figure}
+
+但是，边不交哈密尔顿回路问题现在我们已经可以很容易解决，这个问题在如下的例子中给出。
+\\
+\\
+\begin{sample} {\K 约翰得到了n($\geq 2$)种宝石，他想把这n种宝石串成几条n-长的项链（每条项链中都含有每种宝石一颗），他希望自己串成的每条项链都本质不同，请问他最多能串出几条项链。两条项链\textbf{本质不同}，当且仅当每种宝石相邻的宝石种类都不同。}\end{sample}
+\textbf{解} 我们第一步估算上界：将n种宝石记作$v_0,v_1,v_2,\dots,v_{n-1}$, 作完全图$K_n$, 则此题转化为计算完全图$K_n$中边不交H回路计数问题；完全图中一共有$C_{n}^{2}=\frac{n(n-1)}{2}$条边，每条H回路长为n，所以至多存在$[\frac{C_n^2}{n}]=[\frac{n-1}{2}]$条边不交H回路。
+\\第二步可以构造一个解。\\
+$n=2k+1$时，如下图(Figure 2)将$v_1,v_2,\dots,v_{2k}$，排列在一个圆上，将$v_0$放在圆心。联结$(v_0,v_1,v_2,v_{2k},v_3,v_{2k-1},\dots,v_{k-1},v_{k+3},v_{k},v_{k+2},v_{k+1},v_0)$形成一条H回路；删除联结线，下面将$v_1,v_2,\dots,v_{2k}$命名为顺时针下一个点的名字，也即，将$v_{2k-1}$命名为$v_{2k}$，$v_{2k}$命名为$v_1$，$v_1$命名为$v_2$，$v_2$命名为$v_3$；重复执行联结操作，这样就得到k条边不交H回路。\\
+$n=2k+2$时，$2\mid k$时，将$v_{2k+1}$插入$v_{\frac{k+2}{2}}$和$v_{\frac{3k+2}{2}}$的边中；$2 \nmid k$时，将$v_{2k+1}$插入$v_{\frac{k+3}{2}}$和$v_{\frac{3k+3}{2}}$的边中；依次就可以构造出k条边不交H回路。
+综上，约翰可以串出$[\frac{n-1}{2}]$条本质不同的项链。
+\begin{figure}[h]
+ \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.5\textwidth]{图3.png}
+  \caption{一种构造方案}\label{Fig.label}
+\end{figure}
+
+\begin{theorem} {\K $n\geq 2$的完全图$K_n$可以被分解成边不交哈密尔顿回路。}\end{theorem}
+\begin{proof} 直接参照上例即可。 \end{proof}
+
+\section{哈密尔顿回路的几个重要判定定理}
+\begin{theorem} {\K 对于阶大于3的连通图G，能够满足$$\forall x, y \in G \wedge (x,y) \notin G \Rightarrow d(x)+d(y)\geq k$$
+如果$k=n$那么G就是一个哈密尔顿图，而如果$k<n$那么G中就含有一条k-长路，以及一个长度至少为$\frac{k+2}{2}$的回路。}\end{theorem}
+\begin{proof} 假设G不是哈密尔顿图，我们找到G中的最长道路P($=x_1x_2\dots x_l$)。由于P是最长道路，所以P是极长道路。考虑$$\Gamma(x_1)=\{x_j|(x_1, x_j) \in G\}, \Gamma^{+}(x_l)=\{x_{j+1}|(x_j, x_l) \in G\}.$$
+我们可以断言这两个集合是不交的。否则就会产生回路，进而与G的连通性和非哈密尔顿图的性质违，这点留给读者自己证明。
+那么由定理中的不等式，我们有$$k \leq d(x_1)+d(x_l)=\#\Gamma(x_1)+\#\Gamma^{+}(x_2)\leq l-1 \leq n-1.$$$\#S$表示集合S的大小。
+如果$k=n$，现在就已经产生了矛盾，G是一个哈密尔顿图。如果$k<n$，那么G中就存在一条长度为$l-1=k$的路。
+如果再考虑$x_1$和$x_l$度的关系，不妨$d(x_l)>d(x_1)$，也即$d(x_l)\geq\frac{k}{2}$，我们就能够找到一个长度至少为$\frac{k+2}{2}$的回路了。\end{proof}
+
+\begin{defination} \K 若$v_i$和$v_j$是简单图G的不相邻结点，且满足$d(v_i)+d(v_j)\geq k$，那么在G中增加边$(v_i, v_j)$，重复这个过程，直到不再有这样的结点对为止。最终得到的图称为G 的k-闭包，记作$C_k(G)$。\end{defination}
+
+\begin{coro} \K 如果$\delta(G)\geq \frac{n}{2}$，那么图$G$是哈密尔顿图。\end{coro}
+
+\begin{theorem} \K 图G是哈密尔顿图，当且仅当$C_n(G)$是；图G有哈密尔顿路，当且仅当$C_{n-1}(G)$有。\end{theorem}
+\begin{proof} 这是\textbf{定理 0.2.1}的简单推论。\end{proof}
+
+下面介绍一个中国数学家范更华给出的一个充分性判定条件。
+
+\begin{theorem}[范更华]\K 对于一个2-连通图，如果对于任意一对距离为2的结点$x, y, d(x,y)=2$，都有$$max\{d(x),d(y)\}\geq \frac{n}{2},$$那么$G$是哈密尔顿图。\end{theorem}
+\begin{proof}略\end{proof}
+
+再介绍一个非常实用的平面图具有哈密尔顿圈的必要条件。(尽管我们还没有严谨地定义过平面图)
+\begin{theorem}[Kozyrev and Grinberg] \K 如果一个平面图含有哈密尔顿圈$C$，用$f_k,g_k$表示$C$内部和外部的k边形的数量，我们有$$\sum_{k\geq3}(k-2)(f_k-g_k)=0.$$\end{theorem}
+这个定理可以很方便地证明一类平面图的非哈密尔顿性。
+
+\begin{sample}[Grinberg图] Figure 3不含哈密尔顿回路。\end{sample}
+\begin{proof} Figure 3中只有五边形、八边形和九边形。$$3(f_5-g_5)+6(f_8-g_8)+7(f_9-g_9)=0.$$所以，$$f_9\equiv g_9(mod 3)$$而$f_9+g_9=1$，所以不含哈密尔顿回路。\end{proof}
+\begin{sample}[Grinberg图] Figure 3不含哈密尔顿回路。\end{sample}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{图4.png}
+  \caption{Grinberg图}
+\end{figure}
+\begin{proof} Figure 3中只有五边形、八边形和九边形。$$3(f_5-g_5)+6(f_8-g_8)+7(f_9-g_9)=0.$$所以，$$f_9\equiv g_9(mod 3)$$而$f_9+g_9=1$，所以不含哈密尔顿回路。\end{proof}
+
+\section{坚韧度与哈密尔顿性}
+\begin{theorem} \K 如果图G=(V,E)是哈密尔顿图，那么$$\forall S \subset V \Rightarrow \sigma(G-S)\leq \#S,$$这里$\sigma(G-S)$表示$G-S$的分支数。\end{theorem}
+\begin{proof} 找到哈密尔顿回路$C$，构造图$G'=(V',E')$，s.t.$$V'=V\cap C, E'= E.$$ 那么新图$G'$只包含这一个圈，如果去除掉$\#S$个点剩下就有最多$\#S$个分支，而原图的边更多一些，$$\sigma(G-S)\leq\sigma(G'-S)\leq\#S$$\end{proof}
+这个定理很容易证明，然而由这个定理产生的对于哈密尔顿图充分条件的猜想，却很有意思。
+
+\begin{defination}[Kozyrev and Grinberg] \K $t=min\frac{\#S}{\sigma(G-S)}$，则称G是t-\textbf{坚韧图}。\end{defination}
+
+上面的定理表明：哈密尔顿图一定是1-\textbf{坚韧图}。
+\\
+\\
+Chvatal认为图的坚韧性和哈密尔顿性应当存在双向的判定关系。提出了如下的猜想。
+\begin{guess} \K 存在t满足任何t-坚韧图都是哈密尔顿图。\end{guess}
+他给出了$\frac{3}{2}$-坚韧非哈密尔顿图。所以推测t应当等于2。因为这样的话就和Fleischner's theorem一致。
+
+\begin{theorem}[Fleischner] \K 如果$G$是一个2-点连通图，那么$G^2$是哈密尔顿图。其中$G^2$ 中两点存在边当且仅当两点在$G$中距离小于等于2。\end{theorem}
+
+之后，Thomassen发现了$t>\frac{3}{2}$的非哈密尔顿图，Enomoto等人发现了$(2-\epsilon)$-坚韧图对任意$\epsilon > 0$没有$2$-因子。
+\begin{defination} 一个$k$-因子是图的一个生成k-正则子图。\end{defination}
+
+Enomoto的这个结论说明作为哈密尔顿图的判定依据的坚韧度至少为2。如果Chvatal的猜想成立，那么将证明两个开放了二十余年的猜想。
+\begin{guess} \K 任意4-连通的点边对偶图是哈密尔顿图。\end{guess}
+\begin{guess} \K 任意4-连通的不含$K_{1,3}$子图的图是哈密尔顿图。\end{guess}
+近些年这两个猜想被证明是等价的。然而，人们却发现并不是每一个2-坚韧图都是哈密尔顿图。事实上，我们有如下的定理。
+
+\begin{theorem}[D. Bauer et al] \K $\forall \epsilon > 0$，存在$(\frac{9}{4}-\epsilon)$- 坚韧的非哈密尔顿图。\end{theorem}
+
+所以，关于作为哈密尔顿图的充分条件的坚韧度是否存在还是一个开放的问题。
+\end{document}
