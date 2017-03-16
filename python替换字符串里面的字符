@@ -1,0 +1,5 @@
+
+s="http://1webde/index.jsp"
+import re
+strinfo = re.compile('index\.jsp')
+b = strinfo.sub('compose/main.jsp',s)
