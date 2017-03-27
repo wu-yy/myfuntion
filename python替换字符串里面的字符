@@ -1,5 +1,16 @@
+import re
 
 s="http://1webde/index.jsp"
 import re
 strinfo = re.compile('index\.jsp')
 b = strinfo.sub('compose/main.jsp',s)
+
+
+
+
+com=re.compile('\[.*\]')
+s="[清华大学]Tsinghua university"
+ma=com.match(s)
+print(ma.group(0))
+t=s[s.find(']')+1:]
+print (t)
