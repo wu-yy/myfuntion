@@ -1,0 +1,17 @@
+public Result getUrl(){
+
+    
+
+        Map<String,String> infos=new HashMap<String, String>();
+        infos.put("id","1");
+        infos.put("name","donggua");
+        infos.put("url","32");
+        //数据
+        ArrayList<HashMap<String,String>> data= new ArrayList<HashMap<String, String>>();
+        data.add((HashMap<String, String>) infos);
+        //返回的json 数据
+        JSONObject bataObj = new JSONObject();
+        bataObj.put("info", data);
+        //info 数据格式 {"info":[{"id":"1","name":"donggua","url":"32"},{...},{...}]}
+        return ResultGenerator.genSuccessResult(bataObj);
+    }
