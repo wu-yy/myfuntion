@@ -1,0 +1,12 @@
+String url = "http://www.zybang.com/question/"+id+".html";
+                Document doc = Jsoup.connect(url)
+                    .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
+                    .header("Accept-Encoding", "gzip, deflate, sdch")
+                    .header("Accept-Language", "zh-CN,zh;q=0.8")
+                    .header("Cache-Control", "max-age=0")
+                    .header("Connection", "keep-alive")
+                    .header("Host", "www.zybang.com")
+                    .header("Upgrade-Insecure-Requests", "1")
+                    .header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36")
+                    .timeout(10*1000)
+                    .get();
