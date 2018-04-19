@@ -1,0 +1,2 @@
+  String s2=s1.replaceAll("&amp;\\s*?(lt;)|&amp;\\s*(gt;)|&amp;\\s*(quot;)|&amp;\\s*(copy;)|&amp;\\s*(reg;)", "&"+"$1");
+        
