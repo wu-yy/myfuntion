@@ -1,0 +1,18 @@
+import pandas as pd
+import numpy as np
+import re
+def format(x):
+    value = re.compile(r'^\s*[-+]*[0-9]+\.*[0-9]*\s*$')
+    if value.match(str(x)): #不是数字
+        return x
+    else:
+        print('x2:>>>', str(x))
+        return 0
+
+df=pd.read_csv("test.csv",sep=",",header=None,names=['id1','id2','id3'])
+print(df)
+
+df["id2"]=df["id2"].apply(format)
+df["id3"]=df["id3"].apply(format)
+df['id2']=df['id2'].astype(np.float32)
+print(df)
