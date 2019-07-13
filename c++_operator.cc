@@ -45,3 +45,6 @@ template <typename N>
 bool operator !=(tree_iterator<N>const & left,tree_iterator<N> const & right){
     return !(left==right);
 }
+
+9. = 赋值重载
+ClassA& operator=(const ClassA& cls)
